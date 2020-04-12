@@ -15,6 +15,12 @@ class SignupForm extends Component {
         try {
             await userService.signup(this.state)
             this.props.handleSignupOrLogin();
+            this.setState({
+                name: '',
+                email: '',
+                password: '',
+            })
+            this.props.history.push('/');
 
         }
         catch (err) {
@@ -26,9 +32,9 @@ class SignupForm extends Component {
         return (
             <form onSubmit={this.handleSubmit}>
                 Sign Up
-                <input type='text' name='name' placeholder='name' onChange={this.handleChange}/>
-                <input type='email' name='email' placeholder='email' onChange={this.handleChange} />
-                <input type='password' name='password' placeholder='password' onChange={this.handleChange} />
+                <input value={this.state.name} type='text' name='name' placeholder='name' onChange={this.handleChange}/>
+                <input value={this.state.email}  type='email' name='email' placeholder='email' onChange={this.handleChange} />
+                <input value={this.state.password}  type='password' name='password' placeholder='password' onChange={this.handleChange} />
                 <input type='submit'></input>
             </form>
         )

@@ -24,9 +24,15 @@ class App extends React.Component {
 render (){
   return (
     <div className="App">
+      <div className="title">YouTuber Clone</div>
       <NavBar user={this.state.user} handleLogout={this.handleLogout} />
-      <SignupForm handleSignupOrLogin={this.handleSignupOrLogin} />
-      <LoginPage handleSignupOrLogin={this.handleSignupOrLogin} />
+      <Route path="/signup" render={(props) => (
+        <SignupForm handleSignupOrLogin={this.handleSignupOrLogin}/>
+      )}/>
+      <Route path="/login" render={(props) => (
+        <LoginPage handleSignupOrLogin={this.handleSignupOrLogin}/>
+      )}/>
+
     </div>
   );
 }

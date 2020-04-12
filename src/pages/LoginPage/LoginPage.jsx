@@ -20,11 +20,16 @@ class LoginPage extends Component {
             await userService.login(this.state)
       // Update to call login instead of signup
             this.props.handleSignupOrLogin();
+            this.setState({
+              email: '',
+              pw: '',
+          })
 
 
       
         } catch (err) {
       // Use a modal or toast in your apps instead of alert
+      console.log(err);
         alert('Invalid Credentials!');
         }
     }
