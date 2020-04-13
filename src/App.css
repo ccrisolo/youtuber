@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  background-color: #dfe6e9;
+}
+
+.youtube {
+  border: 2px #0984e3 dashed;
+  margin-top: 20px;
+}
+
+button {
+  margin: 15px;
+  padding: 10px 20px;
+  font-size: 20px;
+  background-color: #ff7675;
+}
