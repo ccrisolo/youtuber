@@ -12,9 +12,11 @@ import { SearchBar, VideoList, VideoDetail } from './components';
 class App extends React.Component {
   state = {
     user: userService.getUser(),
-    video: [],
+    videos: [],
     selectedVideo: null,
   }
+
+
 
   handleLogout = () => {
     userService.logout();
@@ -35,37 +37,93 @@ class App extends React.Component {
       }
     });
     console.log(response.data.items);
-    this.setState({ video: response.data.items, selectedVideo: response.data.items[0] });
+    this.setState({ videos: response.data.items, selectedVideo: response.data.items[0] });
+  }
+
+  onVideoSelect = (video) => {
+    this.setState({ selectedVideo: video })
+  }
+
+  componentDidMount() {
+    this.handleSubmit('streetball');
   }
   
 
 render (){
-  return (
-    <div className="App">
-      <div className="title">YouTuber Clone</div>
-      <NavBar user={this.state.user} handleLogout={this.handleLogout} />
-      <Route path="/signup" render={(props) => (
-        <SignupForm handleSignupOrLogin={this.handleSignupOrLogin}/>
-      )}/>
-      <Route path="/login" render={(props) => (
-        <LoginPage handleSignupOrLogin={this.handleSignupOrLogin}/>
-      )}/>
-      {/* <Youtube /> */}
-      <Grid justify="center" container spacing={10}>
-        <Grid item xs={12}>
-          <Grid container spacing={10}>
+  let isLoggedIn = this.state.user ?
+  <div>
+    <Grid justify="center" container spacing={11}>
+        <Grid item xs={11}>
+          <Grid container spacing={6}>
             <Grid item xs={12}>
+            <NavBar user={this.state.user} handleLogout={this.handleLogout} />
+              {/* <SearchBar onFormSubmit={this.handleSubmit}/> */}
+            </Grid>
+            <Grid item xs={12}>
+            {/* <NavBar user={this.state.user} handleLogout={this.handleLogout} /> */}
               <SearchBar onFormSubmit={this.handleSubmit}/>
             </Grid>
             <Grid item xs={8}>
-              <VideoDetail video={this.state.selectedVideo}/>
+              <VideoDetail videos={this.state.selectedVideo}/>
             </Grid>
             <Grid item xs={4}>
-              <VideoList />
+              <h3>Recommended Videos</h3>
+              <VideoList videos={this.state.videos} onVideoSelect={this.onVideoSelect}/>
             </Grid>
           </Grid>
         </Grid>
       </Grid>
+  </div> :
+  <div>
+    <Grid item xs={12}>
+  <NavBar user={this.state.user} handleLogout={this.handleLogout} />
+    {/* <SearchBar onFormSubmit={this.handleSubmit}/> */}
+  </Grid>
+  </div>
+
+  const { selectedVideo, videos } = this.state;
+  return (
+    <div className="App">
+      <div className="title">YouTuber Clone</div>
+    
+
+      {/* <NavBar user={this.state.user} handleLogout={this.handleLogout} /> */}
+    
+      <Switch>
+      <Route exact path="/signup" render={() => (
+        <SignupForm handleSignupOrLogin={this.handleSignupOrLogin}/>
+      )}/>
+      <Route exact path="/login" render={() => (
+        <LoginPage handleSignupOrLogin={this.handleSignupOrLogin}/>
+      )}/>
+      {/* <Youtube /> */}
+      <Route exact path='/' render={() => (
+        isLoggedIn
+      // <Grid justify="center" container spacing={8}>
+      //   <Grid item xs={12}>
+      //     <Grid container spacing={10}>
+      //       <Grid item xs={12}>
+      //       <NavBar user={this.state.user} handleLogout={this.handleLogout} />
+      //         {/* <SearchBar onFormSubmit={this.handleSubmit}/> */}
+      //       </Grid>
+      //       <Grid item xs={12}>
+      //       {/* <NavBar user={this.state.user} handleLogout={this.handleLogout} /> */}
+      //         <SearchBar onFormSubmit={this.handleSubmit}/>
+      //       </Grid>
+      //       <Grid item xs={8}>
+      //         <VideoDetail videos={selectedVideo}/>
+      //       </Grid>
+      //       <Grid item xs={4}>
+      //         <h3>Recommended Videos</h3>
+      //         <VideoList videos={videos} onVideoSelect={this.onVideoSelect}/>
+      //       </Grid>
+      //     </Grid>
+      //   </Grid>
+      // </Grid>
+      
+      )}/>
+    
+      </Switch>
     </div>
   );
 }

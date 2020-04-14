@@ -7,7 +7,7 @@ class SignupPage extends Component {
     super(props);
     this.state = {message: ''}
   }
-
+ 
   updateMessage = (msg) => {
     this.setState({message: msg});
   }

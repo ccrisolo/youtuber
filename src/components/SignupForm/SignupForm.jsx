@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom';
 import userService from '../../utils/userService'
+
 class SignupForm extends Component {
     state = {
         name: '',
@@ -12,6 +14,7 @@ class SignupForm extends Component {
 
     handleSubmit = async(event) => {
         event.preventDefault();
+        console.log('hitting');
         try {
             await userService.signup(this.state)
             this.props.handleSignupOrLogin();
@@ -40,4 +43,4 @@ class SignupForm extends Component {
         )
     }
 }
-export default SignupForm;
+export default withRouter(SignupForm);

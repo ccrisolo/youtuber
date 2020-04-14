@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import userService from '../../utils/userService';
 
 
@@ -24,7 +24,7 @@ class LoginPage extends Component {
               email: '',
               pw: '',
           })
-
+          this.props.history.push('/')
 
       
         } catch (err) {
@@ -62,4 +62,4 @@ class LoginPage extends Component {
   }
 }
 
-export default LoginPage;
+export default withRouter(LoginPage);
