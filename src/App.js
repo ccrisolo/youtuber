@@ -47,7 +47,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.handleSubmit('streetball');
+    this.handleSubmit('learn react');
   }
   
 
