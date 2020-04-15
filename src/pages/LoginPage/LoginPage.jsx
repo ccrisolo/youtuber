@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import userService from '../../utils/userService';
-import { blue } from '@material-ui/core/colors';
 
 
 class LoginPage extends Component {
