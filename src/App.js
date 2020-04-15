@@ -9,6 +9,8 @@ import Youtube from './api/Youtube';
 import { Grid } from '@material-ui/core';
 import { SearchBar, VideoList, VideoDetail } from './components';
 
+const API_KEY=`${process.env.REACT_APP_YOUTUBE_API_KEY}`
+
 class App extends React.Component {
   state = {
     user: userService.getUser(),
@@ -32,7 +34,7 @@ class App extends React.Component {
       params: {
         part: 'snippet', //<==basically returns all our videos and info to create our <iframe> tags
         maxResults: 5,
-        key: 'AIzaSyBy-ctbOJntn7cppzTaXgB_kw95iBnCTZM',
+        key: API_KEY,
         q: searchTerm,
       }
     });

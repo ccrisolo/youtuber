@@ -1,4 +1,8 @@
 .App {
+  background-image: url(https://i.imgur.com/squlTsm.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: White;
   text-align: center;
 }
 
@@ -51,4 +55,37 @@ button {
   padding: 10px 20px;
   font-size: 20px;
   background-color: #ff7675;
+}
+
+.NavBar { 
+  font-size: 24px;
+  background-image: linear-gradient(260deg, #60b982 0%, #cf6e6e 100%);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  padding-bottom: 10px;
+}
+
+input.form-control {
+  size: 50px;
+  color: rgb(46, 46, 83);
+}
+
+html {
+  background-image: url(https://i.imgur.com/squlTsm.jpg?1);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+form input{
+  color: forestgreen;
+  display: grid;
+  grid-template-columns: 50%;
+  grid-template-rows: 200%;
+  grid-template-columns: 50%;
+  justify-content: center;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  margin: auto;
+  margin-top: 10px;
+  background-color: rgba(240, 98, 98, 0.5);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
