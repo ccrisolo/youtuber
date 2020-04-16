@@ -5,9 +5,12 @@ import userService from './utils/userService';
 import { Switch, Route } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 import LoginPage from './pages/LoginPage/LoginPage';
+import FavoritesListPage from './pages/FavoritesListPage/FavoritesListPage';
 import Youtube from './api/Youtube';
+import * as favoritesService from './utils/favoritesService';
 import { Grid } from '@material-ui/core';
 import { SearchBar, VideoList, VideoDetail } from './components';
+import testPage from './pages/test/testPage';
 
 const API_KEY=`${process.env.REACT_APP_YOUTUBE_API_KEY}`
 
@@ -16,6 +19,7 @@ class App extends React.Component {
     user: userService.getUser(),
     videos: [],
     selectedVideo: null,
+    favorites: []
   }
 
 
@@ -46,9 +50,19 @@ class App extends React.Component {
     this.setState({ selectedVideo: video })
   }
 
+  handleAddFavorite = async newFavData => {
+    console.log(newFavData);
+    const newFav = await favoritesService.create(newFavData);
+    this.setState(state => ({
+      favorites: [...state.favorites, newFav]
+    }),
+    () => this.props.history.push('/'));
+  }
+
   componentDidMount() {
     this.handleSubmit('learn react');
   }
+
   
 
 render (){
@@ -66,7 +80,7 @@ render (){
               <SearchBar onFormSubmit={this.handleSubmit}/>
             </Grid>
             <Grid item xs={8}>
-              <VideoDetail videos={this.state.selectedVideo}/>
+              <VideoDetail videos={this.state.selectedVideo} handleAddFavorite={this.handleAddFavorite}/>
             </Grid>
             <Grid item xs={4}>
               <h3>Recommended Videos</h3>
@@ -87,7 +101,9 @@ render (){
   return (
     <div className="App">
       <div className="title">YouTuber Clone</div>
-    
+     
+        <FavoritesListPage favorites={this.state.favorites}/>
+
 
       {/* <NavBar user={this.state.user} handleLogout={this.handleLogout} /> */}
     
@@ -100,29 +116,7 @@ render (){
       )}/>
       {/* <Youtube /> */}
       <Route exact path='/' render={() => (
-        isLoggedIn
-      // <Grid justify="center" container spacing={8}>
-      //   <Grid item xs={12}>
-      //     <Grid container spacing={10}>
-      //       <Grid item xs={12}>
-      //       <NavBar user={this.state.user} handleLogout={this.handleLogout} />
-      //         {/* <SearchBar onFormSubmit={this.handleSubmit}/> */}
-      //       </Grid>
-      //       <Grid item xs={12}>
-      //       {/* <NavBar user={this.state.user} handleLogout={this.handleLogout} /> */}
-      //         <SearchBar onFormSubmit={this.handleSubmit}/>
-      //       </Grid>
-      //       <Grid item xs={8}>
-      //         <VideoDetail videos={selectedVideo}/>
-      //       </Grid>
-      //       <Grid item xs={4}>
-      //         <h3>Recommended Videos</h3>
-      //         <VideoList videos={videos} onVideoSelect={this.onVideoSelect}/>
-      //       </Grid>
-      //     </Grid>
-      //   </Grid>
-      // </Grid>
-      
+        isLoggedIn      
       )}/>
     
       </Switch>

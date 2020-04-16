@@ -38,7 +38,7 @@ class SignupForm extends Component {
                 <input value={this.state.name} type='text' name='name' placeholder='name' onChange={this.handleChange}/>
                 <input value={this.state.email}  type='email' name='email' placeholder='email' onChange={this.handleChange} />
                 <input value={this.state.password}  type='password' name='password' placeholder='password' onChange={this.handleChange} />
-                <input type='submit'></input>
+                <input id='signupbtn'type='submit'></input>
             </form>
         )
     }
