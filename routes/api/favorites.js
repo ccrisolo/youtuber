@@ -5,6 +5,7 @@ const favCtrl = require('../../controllers/favorites')
 
 
 router.get('/', favCtrl.index)
+router.delete('/:id', favCtrl.delete);
 router.use(require('../../config/auth'));
 router.post('/', checkAuth, favCtrl.create)
 

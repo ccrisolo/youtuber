@@ -61,6 +61,16 @@ class App extends React.Component {
     console.log(this.state.favorites, 'this favorites state');
   }
 
+  handleDeleteFavorite = async id => {
+    console.log(id, 'this is id')
+    await favoritesService.deleteOne(id);
+    console.log('after deleteOne await')
+    this.setState(state => ({
+      favorites: state.favorites.filter(f => f._id !== id)
+    }),() => this.props.history.push('/'));
+  }
+
+
   async componentDidMount() {
     this.handleSubmit('javascript');
     const favorites = await favoritesService.getAll();
@@ -92,6 +102,7 @@ render (){
               <VideoDetail 
               videos={this.state.selectedVideo} 
               handleAddFavorite={this.handleAddFavorite} 
+              handleDeleteFavorite={this.handleDeleteFavorite} 
               favorites={this.state.favorites.filter(f => f.user === this.state.user._id)}
               onVideoSelect={this.onVideoSelect}
               />

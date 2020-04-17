@@ -21,4 +21,10 @@ export function create(formData) {
     }).then(res => res.json());
   }
   
+  export function deleteOne(id) {
+    console.log('this is favoriteService')
+    return fetch(`${BASE_URL}/${id}`, {
+      method: 'DELETE'
+    }).then(res => res.json());
+  }
  

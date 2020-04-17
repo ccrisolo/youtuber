@@ -4,7 +4,7 @@ import { Paper, Typography, Grid } from '@material-ui/core';
 import FavoritesListPage from '../pages/FavoritesListPage/FavoritesListPage';
 import FavoritesListItem from './FavoritesListItem/FavoritesListItem';
 
-const VideoDetail = ({videos, handleAddFavorite, favorites, onVideoSelect}) => {
+const VideoDetail = ({videos, handleAddFavorite, favorites, onVideoSelect, handleDeleteFavorite}) => {
     if(!videos) return <div>Loading...</div>
 
     console.log(favorites, 'this is favorites');
@@ -16,6 +16,7 @@ const VideoDetail = ({videos, handleAddFavorite, favorites, onVideoSelect}) => {
         <FavoritesListItem 
             favorite={favorite}
             onVideoSelect={onVideoSelect}
+            handleDeleteFavorite={handleDeleteFavorite}
         />
         
     )

@@ -14,10 +14,16 @@ async function create(req, res) {
     req.body.user = req.user._id
     let newFavorite = await F.create(req.body);
     res.status(201).json(newFavorite);
-
 }
+
+async function deleteOne(req, res) {
+    const deletedFavorite = await F.findByIdAndRemove(req.params.id);
+    res.status(200).json(deletedFavorite);
+}
+
 
 module.exports = {
     create,
-    index
+    index,
+    delete: deleteOne
 }

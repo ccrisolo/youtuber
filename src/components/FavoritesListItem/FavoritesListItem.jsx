@@ -11,6 +11,10 @@ function FavoritesListItem ({favorite, onVideoSelect, handleDeleteFavorite}) {
                 <img style={{ marginRight: '20px' }} alt="thumbnail" src={favorite.thumbnail}/>
                 <Typography variant="subtitle1"><b>{favorite.title}</b></Typography>
             </Paper>
+                <button
+                className='btn btn-xs btn-danger margin-left-10'
+                onClick={() => handleDeleteFavorite(favorite._id)}
+                >Delete</button>
         </Grid>
         
     )
