@@ -3,6 +3,11 @@ import tokenService from './tokenService'
 const BASE_URL = '/api/favorites'
 
 
+export function getAll() {
+  return fetch(BASE_URL)
+  .then(res => res.json());
+}
+
 export function create(formData) {
   console.log(formData, 'formData');
     return fetch(BASE_URL, {

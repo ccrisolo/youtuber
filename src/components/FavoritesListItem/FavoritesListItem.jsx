@@ -1,20 +1,19 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import { Grid, Paper, Typography } from '@material-ui/core';
 
 
-function FavoritesListItem ({favorite, handleDeleteFavorite}) {
-    return (
-        <div className='panel panel-default'>
-            <div className='panel-heading'>
-                <h3 className='panel-title'>{favorite}</h3>
-                <h1>favorite item</h1>
-
-
-
-            </div>
-        </div>
-    );
-
+function FavoritesListItem ({favorite, onVideoSelect, handleDeleteFavorite}) {
+    return(
+        
+        <Grid item xs={12}>
+            <Paper elevation={12} style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }} onClick={() => onVideoSelect(favorite)}>
+                <img style={{ marginRight: '20px' }} alt="thumbnail" src={favorite.thumbnail}/>
+                <Typography variant="subtitle1"><b>{favorite.title}</b></Typography>
+            </Paper>
+        </Grid>
+        
+    )
 }
 
 export default FavoritesListItem;

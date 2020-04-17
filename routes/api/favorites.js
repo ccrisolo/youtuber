@@ -4,6 +4,7 @@ const Favorite = require('../../models/favorite')
 const favCtrl = require('../../controllers/favorites')
 
 
+router.get('/', favCtrl.index)
 router.use(require('../../config/auth'));
 router.post('/', checkAuth, favCtrl.create)
 

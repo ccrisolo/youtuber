@@ -1,39 +1,53 @@
 import React from 'react';
 
-import { Paper, Typography } from '@material-ui/core';
+import { Paper, Typography, Grid } from '@material-ui/core';
 import FavoritesListPage from '../pages/FavoritesListPage/FavoritesListPage';
 import FavoritesListItem from './FavoritesListItem/FavoritesListItem';
 
-const VideoDetail = ({videos, handleAddFavorite}) => {
+const VideoDetail = ({videos, handleAddFavorite, favorites, onVideoSelect}) => {
     if(!videos) return <div>Loading...</div>
 
-    console.log(videos.id.videoId);
-    console.log(videos.id);
-    console.log(videos);
-    console.log('videoId')
+    console.log(favorites, 'this is favorites');
+    console.log(videos, 'this is videos');
+  
 
     const videoSrc = `https://www.youtube.com/embed/${videos.id.videoId}`
-
+    const listOfFavorites = favorites.map(favorite => 
+        <FavoritesListItem 
+            favorite={favorite}
+            onVideoSelect={onVideoSelect}
+        />
+        
+    )
     return(
         <React.Fragment>
-            <Paper elevation={6} style={{height: '60%'}}>
+            <Paper elevation={6} style={{height: '60vmin'}}>
                 <iframe frameBorder="0" height="100%" width="100%" title="Video Player" src={videoSrc}/>
             </Paper>
-            <h1>test</h1>
-            <Paper elevation={6} style={{padding: '15px'}}>
+           <br></br>
+            <Paper elevation={24} style={{padding: '15px' }}>
                 <Typography variant="h4">{videos.snippet.title} - {videos.snippet.channelTitle}</Typography>
-                <Typography variant="subtitle1">{videos.snippet.channelTitle}</Typography>
+                <h3>Channel Title:</h3>
+                <Typography style={{color: 'gray'}} variant="subtitle1">{videos.snippet.channelTitle}</Typography>
+                <h3>Description:</h3>
                 <Typography variant="subtitle2">{videos.snippet.description}</Typography>
-                <h1>test2</h1>
                 {/* <p>{videos}</p> */}
             </Paper>
             <div>
                 {/* need a form that has youtube url(const videosrc), youtube apiId of video, userId */}
                 {/* button onsubmit util func 'createFavorite function' to be found in utils folder */}
                 
-                <button onClick={() => handleAddFavorite({videoId: videos.id.videoId})}>Add to Favorites</button>
-                <FavoritesListItem />
+                <button onClick={() => handleAddFavorite({
+                    videoId: videos.id.videoId, 
+                    thumbnail: videos.snippet.thumbnails.medium.url,
+                    title: videos.snippet.title,
+                    })}>Add to Favorites</button>
+                 <h2 className='favoritesListHeading' style={{color: 'black', font: 'Roboto'}}>Favorites List</h2>   
+                
             </div>
+            <Grid container spacing={5}>
+            {listOfFavorites}
+            </Grid>
         </React.Fragment>
     )
 }

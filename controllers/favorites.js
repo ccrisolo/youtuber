@@ -2,15 +2,22 @@ let F = require('../models/favorite')
 let U = require('../models/user')
 //takes the form data from the front end(apiId, youtube url, userId) and creates an instance of a favorite
 
+async function index(req, res) {
+    const favorites = await F.find({});
+    res.status(200).json(favorites);
+}
+
 async function create(req, res) {
     console.log('if below returns undefined check back on user auth');
-    console.log(req.user);
+    console.log(req.user, 'this is req.user');
     console.log(req);
+    req.body.user = req.user._id
     let newFavorite = await F.create(req.body);
     res.status(201).json(newFavorite);
 
 }
 
 module.exports = {
-    create
+    create,
+    index
 }

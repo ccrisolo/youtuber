@@ -6,11 +6,11 @@ import { Switch, Route } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 import LoginPage from './pages/LoginPage/LoginPage';
 import FavoritesListPage from './pages/FavoritesListPage/FavoritesListPage';
+import FavoritesListItem from './components/FavoritesListItem/FavoritesListItem';
 import Youtube from './api/Youtube';
 import * as favoritesService from './utils/favoritesService';
 import { Grid } from '@material-ui/core';
 import { SearchBar, VideoList, VideoDetail } from './components';
-import testPage from './pages/test/testPage';
 
 const API_KEY=`${process.env.REACT_APP_YOUTUBE_API_KEY}`
 
@@ -51,16 +51,20 @@ class App extends React.Component {
   }
 
   handleAddFavorite = async newFavData => {
-    console.log(newFavData);
+    console.log(this.state.user, 'user');
+    console.log(this.state.favorites, 'favorites');
     const newFav = await favoritesService.create(newFavData);
     this.setState(state => ({
       favorites: [...state.favorites, newFav]
     }),
     () => this.props.history.push('/'));
+    console.log(this.state.favorites, 'this favorites state');
   }
 
-  componentDidMount() {
-    this.handleSubmit('learn react');
+  async componentDidMount() {
+    this.handleSubmit('javascript');
+    const favorites = await favoritesService.getAll();
+    this.setState({favorites})
   }
 
   
@@ -72,19 +76,32 @@ render (){
         <Grid item xs={11}>
           <Grid container spacing={6}>
             <Grid item xs={12}>
-            <NavBar user={this.state.user} handleLogout={this.handleLogout} />
+            <NavBar 
+              user={this.state.user} 
+              handleLogout={this.handleLogout} 
+              />
               {/* <SearchBar onFormSubmit={this.handleSubmit}/> */}
             </Grid>
             <Grid item xs={12}>
             {/* <NavBar user={this.state.user} handleLogout={this.handleLogout} /> */}
-              <SearchBar onFormSubmit={this.handleSubmit}/>
+              <SearchBar 
+              onFormSubmit={this.handleSubmit}
+              />
             </Grid>
             <Grid item xs={8}>
-              <VideoDetail videos={this.state.selectedVideo} handleAddFavorite={this.handleAddFavorite}/>
+              <VideoDetail 
+              videos={this.state.selectedVideo} 
+              handleAddFavorite={this.handleAddFavorite} 
+              favorites={this.state.favorites.filter(f => f.user === this.state.user._id)}
+              onVideoSelect={this.onVideoSelect}
+              />
             </Grid>
             <Grid item xs={4}>
-              <h3>Recommended Videos</h3>
-              <VideoList videos={this.state.videos} onVideoSelect={this.onVideoSelect}/>
+              <h3 style={{color: 'black', font: 'Roboto'}}>Recommended Videos</h3>
+              <VideoList
+               videos={this.state.videos}
+                onVideoSelect={this.onVideoSelect}
+                />
             </Grid>
           </Grid>
         </Grid>
@@ -100,9 +117,9 @@ render (){
   const { selectedVideo, videos } = this.state;
   return (
     <div className="App">
-      <div className="title">YouTuber Clone</div>
+      <div className="title" style={{color: 'black', font: 'Roboto'}}><h1>YouTuber Clone</h1></div>
      
-        <FavoritesListPage favorites={this.state.favorites}/>
+        {/* <FavoritesListPage favorites={this.state.favorites}/> */}
 
 
       {/* <NavBar user={this.state.user} handleLogout={this.handleLogout} /> */}
