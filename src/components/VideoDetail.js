@@ -14,9 +14,10 @@ const VideoDetail = ({videos, handleAddFavorite, favorites, onVideoSelect, handl
     const videoSrc = `https://www.youtube.com/embed/${videos.id.videoId}`
     const listOfFavorites = favorites.map(favorite => 
         <FavoritesListItem 
-            favorite={favorite}
+            favorite={favorite} 
             onVideoSelect={onVideoSelect}
             handleDeleteFavorite={handleDeleteFavorite}
+
         />
         
     )
@@ -42,6 +43,8 @@ const VideoDetail = ({videos, handleAddFavorite, favorites, onVideoSelect, handl
                     videoId: videos.id.videoId, 
                     thumbnail: videos.snippet.thumbnails.medium.url,
                     title: videos.snippet.title,
+                    channelTitle: videos.snippet.channelTitle,
+                    description: videos.snippet.description
                     })}>Add to Favorites</button>
                  <h2 className='favoritesListHeading' style={{color: 'black', font: 'Roboto'}}>Favorites List</h2>   
                 
