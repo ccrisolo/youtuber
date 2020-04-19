@@ -38,22 +38,23 @@ class LoginPage extends Component {
   render() {
     return (
       <div className="LoginPage">
-        <header className="header-footer">Log In</header>
+        <header className="header-footer"></header>
         <form className="form-horizontal" onSubmit={this.handleSubmit} >
           <div className="form-group">
             <div className="col-sm-12">
-              <input style={{width: 300}}type="email" className="form-control" placeholder="Email" value={this.state.email} name="email" onChange={this.handleChange} />
+            <h1 id='logInTitle'>Log In</h1>
+              <input style={{width: 300, height: 30}}type="email" className="form-control" placeholder="Email" value={this.state.email} name="email" onChange={this.handleChange} />
             </div>
           </div>
           <div className="form-group">
             <div className="col-sm-12">
-              <input style={{width: 300}} type="password" className="form-control" placeholder="Password" value={this.state.pw} name="pw" onChange={this.handleChange} />
+              <input style={{width: 300, height: 30}} type="password" className="form-control" placeholder="Password" value={this.state.pw} name="pw" onChange={this.handleChange} />
             </div>
           </div>
           <div className="form-group">
             <div className="col-sm-12 text-center">
               <button className="btn btn-default">Log In</button>&nbsp;&nbsp;&nbsp;
-              <Link to='/' variant="inherit" color="primary">Cancel</Link>
+              <Link to='/' variant="inherit" style={{color: 'rgba(223, 0, 0, 0.5)', fontFamily: 'sans-serif', textDecoration: 'none', padding: '10px 20px', border: 'solid', borderRadius: '25px'}}>Cancel</Link>
             </div>
           </div>
         </form>

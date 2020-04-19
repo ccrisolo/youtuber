@@ -128,7 +128,7 @@ render (){
   const { selectedVideo, videos } = this.state;
   return (
     <div className="App">
-      <div className="title" style={{color: 'black', font: 'Roboto'}}><h1>YouTuber Clone</h1></div>
+      <div className="title" style={{color: 'black', font: 'Roboto'}}></div>
      
         {/* <FavoritesListPage favorites={this.state.favorites}/> */}
 
