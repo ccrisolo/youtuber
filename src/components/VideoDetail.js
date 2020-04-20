@@ -7,10 +7,8 @@ import FavoritesListItem from './FavoritesListItem/FavoritesListItem';
 const VideoDetail = ({videos, handleAddFavorite, favorites, onVideoSelect, handleDeleteFavorite}) => {
     if(!videos) return <div>Loading...</div>
 
-    console.log(favorites, 'this is favorites');
-    console.log(videos, 'this is videos');
-  
 
+  
     const videoSrc = `https://www.youtube.com/embed/${videos.id.videoId}`
     const listOfFavorites = favorites.map(favorite => 
         <FavoritesListItem 
@@ -36,9 +34,6 @@ const VideoDetail = ({videos, handleAddFavorite, favorites, onVideoSelect, handl
                 {/* <p>{videos}</p> */}
             </Paper>
             <div>
-                {/* need a form that has youtube url(const videosrc), youtube apiId of video, userId */}
-                {/* button onsubmit util func 'createFavorite function' to be found in utils folder */}
-                
                 <button onClick={() => handleAddFavorite({
                     videoId: videos.id.videoId, 
                     thumbnail: videos.snippet.thumbnails.medium.url,

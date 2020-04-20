@@ -14,9 +14,7 @@ function FavoritesListItem ({favorite, onVideoSelect, handleDeleteFavorite}) {
             description: favorite.description
         }
     }
-    console.log(favVideo, 'this is favVideo')
-    // favorite.id.videoId = favorite.videoId;
-    console.log(favorite, "favorite list item")
+
 
     return(
         

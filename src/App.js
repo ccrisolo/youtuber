@@ -5,8 +5,6 @@ import userService from './utils/userService';
 import { Switch, Route } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 import LoginPage from './pages/LoginPage/LoginPage';
-import FavoritesListPage from './pages/FavoritesListPage/FavoritesListPage';
-import FavoritesListItem from './components/FavoritesListItem/FavoritesListItem';
 import Youtube from './api/Youtube';
 import * as favoritesService from './utils/favoritesService';
 import { Grid } from '@material-ui/core';
@@ -90,10 +88,10 @@ render (){
               user={this.state.user} 
               handleLogout={this.handleLogout} 
               />
-              {/* <SearchBar onFormSubmit={this.handleSubmit}/> */}
+           
             </Grid>
             <Grid item xs={12}>
-            {/* <NavBar user={this.state.user} handleLogout={this.handleLogout} /> */}
+           
               <SearchBar 
               onFormSubmit={this.handleSubmit}
               />
@@ -121,7 +119,7 @@ render (){
   <div>
     <Grid item xs={12}>
   <NavBar user={this.state.user} handleLogout={this.handleLogout} />
-    {/* <SearchBar onFormSubmit={this.handleSubmit}/> */}
+   
   </Grid>
   </div>
 
@@ -129,11 +127,6 @@ render (){
   return (
     <div className="App">
       <div className="title" style={{color: 'black', font: 'Roboto'}}></div>
-     
-        {/* <FavoritesListPage favorites={this.state.favorites}/> */}
-
-
-      {/* <NavBar user={this.state.user} handleLogout={this.handleLogout} /> */}
     
       <Switch>
       <Route exact path="/signup" render={() => (
