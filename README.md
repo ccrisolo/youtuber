@@ -16,7 +16,7 @@
 
 
 ## Technologies Used
-MongoDb, Express, ReactJS, NodeJS, HTML, CSS, JavaScript, YouTube API, Material-UI
+MongoDb, Express, ReactJS, NodeJS, HTML, CSS, JavaScript, YouTube API, Axios, Material-UI
 
 ## Getting Started
 [Click to try YouTuber]: https://youtuber-clone.herokuapp.com/
