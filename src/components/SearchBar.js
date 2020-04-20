@@ -21,7 +21,7 @@ class SearchBar extends React.Component {
 
     render(){
         return(
-            <Paper elevation={8} style={{ padding: '60px', marginTop: '200px' }}>
+            <Paper elevation={12} style={{ padding: '60px', marginTop: '10px', backgroundColor:'lightgrey', fontColor:'white'}}>
                 <form onSubmit={this.handleSubmit}>
                     <TextField fullWidth label="Search YouTube..." onChange={this.handleChange}/>
                 </form>

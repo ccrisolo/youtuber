@@ -54,7 +54,7 @@ class LoginPage extends Component {
           <div className="form-group">
             <div className="col-sm-12 text-center">
               <button className="btn btn-default">Log In</button>&nbsp;&nbsp;&nbsp;
-              <Link to='/' variant="inherit" style={{color: 'rgba(223, 0, 0, 0.5)', fontFamily: 'sans-serif', textDecoration: 'none', padding: '10px 20px', border: 'solid', borderRadius: '25px'}}>Cancel</Link>
+              <Link to='/' variant="inherit" style={{color: 'rgba(223, 0, 0, 0.5)', fontFamily: 'sans-serif', textDecoration: 'none', padding: '10px 22px', border: 'solid', borderRadius: '25px'}}>Cancel</Link>
             </div>
           </div>
         </form>

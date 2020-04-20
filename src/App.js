@@ -37,7 +37,7 @@ class App extends React.Component {
     const response = await Youtube.get('search', {
       params: {
         part: 'snippet', //<==basically returns all our videos and info to create our <iframe> tags
-        maxResults: 5,
+        maxResults: 8,
         key: API_KEY,
         q: searchTerm,
       }

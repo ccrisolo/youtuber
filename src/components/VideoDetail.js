@@ -23,7 +23,7 @@ const VideoDetail = ({videos, handleAddFavorite, favorites, onVideoSelect, handl
     )
     return(
         <React.Fragment>
-            <Paper elevation={6} style={{height: '60vmin'}}>
+            <Paper elevation={6} style={{height: '60vh', width: '60vw'}}>
                 <iframe frameBorder="0" height="100%" width="100%" title="Video Player" src={videoSrc}/>
             </Paper>
            <br></br>
