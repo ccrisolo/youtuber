@@ -49,14 +49,11 @@ class App extends React.Component {
   }
 
   handleAddFavorite = async newFavData => {
-    console.log(this.state.user, 'user');
-    console.log(this.state.favorites, 'favorites');
     const newFav = await favoritesService.create(newFavData);
     this.setState(state => ({
       favorites: [...state.favorites, newFav]
     }),
     () => this.props.history.push('/'));
-    console.log(this.state.favorites, 'this favorites state');
   }
 
   handleDeleteFavorite = async id => {

@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { Paper, Typography, Grid } from '@material-ui/core';
-import FavoritesListPage from '../pages/FavoritesListPage/FavoritesListPage';
 import FavoritesListItem from './FavoritesListItem/FavoritesListItem';
 
 const VideoDetail = ({videos, handleAddFavorite, favorites, onVideoSelect, handleDeleteFavorite}) => {
