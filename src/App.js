@@ -86,8 +86,8 @@ render (){
               handleLogout={this.handleLogout} 
               />
            
-            </Grid>
-            <Grid item xs={12}>
+            {/* </Grid>
+            <Grid item xs={12}> */}
            
               <SearchBar 
               onFormSubmit={this.handleSubmit}

@@ -7,7 +7,6 @@ const favoriteSchema = new Schema({
     title: String,
     channelTitle: String,
     description: String,
-    // url: String,
     user: {type: Schema.Types.ObjectId, ref: 'User'}
 });
 
