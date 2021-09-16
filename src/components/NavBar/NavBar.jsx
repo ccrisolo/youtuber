@@ -10,20 +10,32 @@ const NavBar = props => {
             </Link>
         </div>
     ) : (
-        <div>
-            <Link to='/login' className='NavBar-link'>
-                LOG IN
-            </Link>
-            &nbsp;&nbsp;&nbsp;&nbsp;
+        <div className='navbar-container'>
+            <div>
+                <Link to='/login' className='NavBar-link'>
+                    LOG IN
+                </Link>
+            </div>
+            <div>
+
             <Link to='/signup' className='NavBar-link'>
                 SIGN UP
             </Link>
+            </div>
         </div>
     );
     return (
         <div className='NavBar'>
             <h1 id='title'>YouTube Clone</h1>
-            <div style={{display: 'flex', flexDirection: 'row', alignItems:'center' }}>{nav}</div>
+            <div
+                style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                }}
+            >
+                {nav}
+            </div>
         </div>
     );
 };
