@@ -9,6 +9,7 @@ import Youtube from "./api/Youtube";
 import * as favoritesService from "./utils/favoritesService";
 import { Grid } from "@material-ui/core";
 import { SearchBar, VideoList, VideoDetail } from "./components";
+import GoogleLogin from "react-google-login";
 
 const API_KEY = `${process.env.REACT_APP_YOUTUBE_API_KEY}`;
 
@@ -27,6 +28,21 @@ class App extends React.Component {
 
     handleSignupOrLogin = () => {
         this.setState({ user: userService.getUser() });
+    };
+
+    handleGoogleLogin = async googleData => {
+        const res = await fetch("/auth/google", {
+            method: "POST",
+            body: JSON.stringify({
+                token: googleData.tokenId,
+            }),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        const data = await res.json();
+        // store returned user somehow
+        console.log("data", data);
     };
 
     handleSubmit = async searchTerm => {
@@ -127,18 +143,19 @@ class App extends React.Component {
                         user={this.state.user}
                         handleLogout={this.handleLogout}
                     />
+                    <GoogleLogin
+                        clientId={process.env.GOOGLE_CLIENT_ID}
+                        buttonText='Log in with Google'
+                        onSuccess={this.handleGoogleLogin}
+                        onFailure={this.handleGoogleLogin}
+                        cookiePolicy={"single_host_origin"}
+                    />
                 </Grid>
             </div>
         );
 
-        const { selectedVideo, videos } = this.state;
         return (
             <div className='App'>
-                <div
-                    className='title'
-                    style={{ color: "black", font: "Roboto" }}
-                ></div>
-
                 <Switch>
                     <Route
                         exact
