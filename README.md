@@ -1,4 +1,4 @@
-#YouTuber Clone App
+#YouTube Clone App
 ## Description
 
 The YouTuber Clone is a simple video searching application that utilizes the youtube api.  Users can sign up and save their favorite videos to a favorites list. Users favorites will be saved and displayed under the main video upon login.   
