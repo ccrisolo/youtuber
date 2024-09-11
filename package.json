@@ -1,6 +1,9 @@
 {
   "name": "youtuber",
   "version": "0.1.0",
+  "engines": {
+    "node": "16.20.2"
+  },
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.9.10",
