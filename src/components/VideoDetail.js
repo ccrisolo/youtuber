@@ -6,8 +6,6 @@ import FavoritesListItem from './FavoritesListItem/FavoritesListItem';
 const VideoDetail = ({videos, handleAddFavorite, favorites, onVideoSelect, handleDeleteFavorite}) => {
     if(!videos) return <div>Loading...</div>
 
-
-  
     const videoSrc = `https://www.youtube.com/embed/${videos.id.videoId}`
     const listOfFavorites = favorites.map(favorite => 
         <FavoritesListItem 

@@ -4,6 +4,8 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 require("dotenv").config();
+
+//connect to database
 require("./config/database");
 
 const app = express();

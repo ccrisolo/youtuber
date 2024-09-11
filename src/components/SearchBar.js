@@ -1,7 +1,7 @@
 import React from "react";
 import { Paper, TextField, withStyles } from "@material-ui/core";
 
-class SearchBar extends React.Component {
+class   SearchBar extends React.Component {
     state = {
         searchTerm: "",
     };
