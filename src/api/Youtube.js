@@ -5,10 +5,10 @@ const BASE_URL = "https://www.googleapis.com/youtube/v3/";
 //create will make GET requests
 export default axios.create({
     baseURL: BASE_URL,
-    params: {
-        key: API_KEY,
-        part: "snippet",
-    },
+    // params: {
+    //     key: API_KEY,
+    //     part: "snippet",
+    // },
 });
 
 export const getSearchedVideos = searchQuery => {

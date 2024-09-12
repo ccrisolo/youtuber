@@ -84,7 +84,7 @@ class App extends React.Component {
     render() {
         let isLoggedIn = this.state.user ? (
             <div>
-                <Grid justify='center' container spacing={10}>
+                <Grid justifyContent='center' container spacing={10}>
                     <Grid item xs={11}>
                         <Grid container spacing={6}>
                             <Grid item xs={12}>
