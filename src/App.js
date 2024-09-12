@@ -10,7 +10,7 @@ import * as favoritesService from "./utils/favoritesService";
 import { Grid } from "@material-ui/core";
 import { SearchBar, VideoList, VideoDetail } from "./components";
 
-const API_KEY = `${process.env.REACT_APP_YOUTUBE_API_KEY}`;
+const API_KEY = `${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}`;
 
 class App extends React.Component {
     state = {
