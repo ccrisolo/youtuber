@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
+const cors = require('cors')
 require("dotenv").config();
 
 //connect to database
@@ -18,6 +19,10 @@ db.once('open', () => console.log('connected to database'))
 const favoritesRouter = require('./routes/api/favorites')
 
 app.listen(3000, () => console.log('server started'))
+
+app.use(cors({ // Use cors middleware
+  origin: '*', // Adjust this to your frontend URL or a list of allowed URLs
+}));
 
 
 app.use(logger('dev'));
