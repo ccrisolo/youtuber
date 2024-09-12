@@ -19,7 +19,7 @@ db.once('open', () => console.log('Connected to database'));
 
 // Use CORS middleware
 app.use(cors({
-  origin: '*', // Adjust this to your frontend URL or a list of allowed URLs
+  origin: 'https://youtuber-plum.vercel.app', // Adjust this to your frontend URL or a list of allowed URLs
 }));
 
 app.use(logger('dev'));
