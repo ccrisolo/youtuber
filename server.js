@@ -18,11 +18,12 @@ db.on('error', (error) => console.error('Database connection error:', error));
 db.once('open', () => console.log('Connected to database'));
 
 // Use CORS middleware
-app.use(cors());
+// app.use(cors());
 
-// app.use(cors({
-//   origin: 'https://youtuber-plum.vercel.app', // Adjust this to your frontend URL or a list of allowed URLs
-// }));
+app.use(cors({
+  origin: 'https://youtuber-plum.vercel.app', // Adjust this to your frontend URL or a list of allowed URLs
+  methods: ['GET', 'POST', 'PUT', 'DELETE'] // Ensure methods are allowed
+}));
 
 app.use(logger('dev'));
 app.use(express.json());
