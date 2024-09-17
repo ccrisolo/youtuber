@@ -1,3 +1,4 @@
+// contains the logic to connect to MongoDB using Mongoose, centralizing all database connection logic in one place.
 const mongoose = require("mongoose");
 
 mongoose
