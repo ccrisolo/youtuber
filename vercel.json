@@ -1,11 +1,14 @@
 {
-    "functions": {
-      "api/users/*.js": {}
-    },
+    "builds": [
+      {
+        "src": "routes/api/**/*.js",
+        "use": "@vercel/node"
+      }
+    ],
     "rewrites": [
       {
         "source": "/api/(.*)",
-        "destination": "/api/$1"
+        "destination": "/routes/api/users.js"
       }
     ]
   }
