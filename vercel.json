@@ -1,7 +1,7 @@
 {
     "functions": {
       "api/users/login.js": {
-        "runtime": "nodejs16.x"
+        "runtime": "nodejs18.x"
       }
     }
   }
