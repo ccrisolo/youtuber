@@ -1,8 +1,12 @@
 {
     "functions": {
-      "api/users/login.js": {
-        "runtime": "nodejs18.x"
+      "api/users/*.js": {}
+    },
+    "rewrites": [
+      {
+        "source": "/api/(.*)",
+        "destination": "/api/$1"
       }
-    }
+    ]
   }
   
